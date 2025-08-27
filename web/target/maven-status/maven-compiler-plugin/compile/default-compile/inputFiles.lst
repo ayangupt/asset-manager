@@ -1,0 +1,13 @@
+/home/ayangupta/asset-manager/web/src/main/java/com/microsoft/migration/assets/AssetsManagerApplication.java
+/home/ayangupta/asset-manager/web/src/main/java/com/microsoft/migration/assets/config/AwsS3Config.java
+/home/ayangupta/asset-manager/web/src/main/java/com/microsoft/migration/assets/config/RabbitConfig.java
+/home/ayangupta/asset-manager/web/src/main/java/com/microsoft/migration/assets/controller/HomeController.java
+/home/ayangupta/asset-manager/web/src/main/java/com/microsoft/migration/assets/controller/S3Controller.java
+/home/ayangupta/asset-manager/web/src/main/java/com/microsoft/migration/assets/model/ImageMetadata.java
+/home/ayangupta/asset-manager/web/src/main/java/com/microsoft/migration/assets/model/ImageProcessingMessage.java
+/home/ayangupta/asset-manager/web/src/main/java/com/microsoft/migration/assets/model/S3StorageItem.java
+/home/ayangupta/asset-manager/web/src/main/java/com/microsoft/migration/assets/repository/ImageMetadataRepository.java
+/home/ayangupta/asset-manager/web/src/main/java/com/microsoft/migration/assets/service/AwsS3Service.java
+/home/ayangupta/asset-manager/web/src/main/java/com/microsoft/migration/assets/service/BackupMessageProcessor.java
+/home/ayangupta/asset-manager/web/src/main/java/com/microsoft/migration/assets/service/LocalFileStorageService.java
+/home/ayangupta/asset-manager/web/src/main/java/com/microsoft/migration/assets/service/StorageService.java

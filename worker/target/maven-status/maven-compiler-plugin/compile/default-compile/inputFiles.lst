@@ -1,0 +1,11 @@
+/home/ayangupta/asset-manager/worker/src/main/java/com/microsoft/migration/assets/worker/WorkerApplication.java
+/home/ayangupta/asset-manager/worker/src/main/java/com/microsoft/migration/assets/worker/config/AwsS3Config.java
+/home/ayangupta/asset-manager/worker/src/main/java/com/microsoft/migration/assets/worker/config/RabbitConfig.java
+/home/ayangupta/asset-manager/worker/src/main/java/com/microsoft/migration/assets/worker/model/ImageMetadata.java
+/home/ayangupta/asset-manager/worker/src/main/java/com/microsoft/migration/assets/worker/model/ImageProcessingMessage.java
+/home/ayangupta/asset-manager/worker/src/main/java/com/microsoft/migration/assets/worker/repository/ImageMetadataRepository.java
+/home/ayangupta/asset-manager/worker/src/main/java/com/microsoft/migration/assets/worker/service/AbstractFileProcessingService.java
+/home/ayangupta/asset-manager/worker/src/main/java/com/microsoft/migration/assets/worker/service/FileProcessor.java
+/home/ayangupta/asset-manager/worker/src/main/java/com/microsoft/migration/assets/worker/service/LocalFileProcessingService.java
+/home/ayangupta/asset-manager/worker/src/main/java/com/microsoft/migration/assets/worker/service/S3FileProcessingService.java
+/home/ayangupta/asset-manager/worker/src/main/java/com/microsoft/migration/assets/worker/util/StorageUtil.java

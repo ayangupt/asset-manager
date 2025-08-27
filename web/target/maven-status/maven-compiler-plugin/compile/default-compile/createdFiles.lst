@@ -1,0 +1,13 @@
+com/microsoft/migration/assets/controller/HomeController.class
+com/microsoft/migration/assets/repository/ImageMetadataRepository.class
+com/microsoft/migration/assets/config/RabbitConfig.class
+com/microsoft/migration/assets/service/LocalFileStorageService.class
+com/microsoft/migration/assets/service/BackupMessageProcessor.class
+com/microsoft/migration/assets/service/AwsS3Service.class
+com/microsoft/migration/assets/service/StorageService.class
+com/microsoft/migration/assets/model/ImageMetadata.class
+com/microsoft/migration/assets/model/ImageProcessingMessage.class
+com/microsoft/migration/assets/AssetsManagerApplication.class
+com/microsoft/migration/assets/config/AwsS3Config.class
+com/microsoft/migration/assets/controller/S3Controller.class
+com/microsoft/migration/assets/model/S3StorageItem.class

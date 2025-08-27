@@ -1,0 +1,11 @@
+com/microsoft/migration/assets/worker/service/FileProcessor.class
+com/microsoft/migration/assets/worker/repository/ImageMetadataRepository.class
+com/microsoft/migration/assets/worker/WorkerApplication.class
+com/microsoft/migration/assets/worker/config/RabbitConfig.class
+com/microsoft/migration/assets/worker/util/StorageUtil.class
+com/microsoft/migration/assets/worker/model/ImageMetadata.class
+com/microsoft/migration/assets/worker/config/AwsS3Config.class
+com/microsoft/migration/assets/worker/model/ImageProcessingMessage.class
+com/microsoft/migration/assets/worker/service/S3FileProcessingService.class
+com/microsoft/migration/assets/worker/service/LocalFileProcessingService.class
+com/microsoft/migration/assets/worker/service/AbstractFileProcessingService.class
