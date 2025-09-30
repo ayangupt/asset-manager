@@ -248,23 +248,7 @@ resource workerAppService 'Microsoft.Web/sites@2023-12-01' = {
         }
         {
           name: 'AZURE_SERVICEBUS_NAMESPACE'
-          value: serviceBusNamespace.name
-        }
-        {
-          name: 'AZURE_STORAGE_ACCOUNT_NAME'
-          value: storageAccount.name  
-        }
-        {
-          name: 'AZURE_STORAGE_BLOB_CONTAINER_NAME'
-          value: 'images'
-        }
-        {
-          name: 'azure.storage.account-name'
-          value: storageAccount.name
-        }
-        {
-          name: 'azure.storage.blob.container-name'
-          value: 'images'
+          value: '${serviceBusNamespace.name}.servicebus.windows.net'
         }
         {
           name: 'SPRING_DATASOURCE_URL'
