@@ -92,3 +92,5 @@ yarn-error.log*
 
 # Application specific
 application-local.properties
+application.pid
+nohup.out
