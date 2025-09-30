@@ -81,8 +81,20 @@ public class S3Controller {
             InputStream inputStream = storageService.getObject(key);
             
             HttpHeaders headers = new HttpHeaders();
-            // Use a generic content type if we don't know the exact type
-            headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+            
+            // Determine content type based on file extension
+            String contentType = MediaType.APPLICATION_OCTET_STREAM_VALUE;
+            if (key.toLowerCase().endsWith(".jpg") || key.toLowerCase().endsWith(".jpeg")) {
+                contentType = MediaType.IMAGE_JPEG_VALUE;
+            } else if (key.toLowerCase().endsWith(".png")) {
+                contentType = MediaType.IMAGE_PNG_VALUE;
+            } else if (key.toLowerCase().endsWith(".gif")) {
+                contentType = MediaType.IMAGE_GIF_VALUE;
+            } else if (key.toLowerCase().endsWith(".txt")) {
+                contentType = MediaType.TEXT_PLAIN_VALUE;
+            }
+            
+            headers.setContentType(MediaType.parseMediaType(contentType));
             
             return ResponseEntity.ok()
                     .headers(headers)

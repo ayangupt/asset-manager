@@ -1,16 +1,12 @@
 package com.microsoft.migration.assets.service;
 
-import com.azure.identity.DefaultAzureCredentialBuilder;
 import com.azure.storage.blob.BlobServiceClient;
-import com.azure.storage.blob.BlobServiceClientBuilder;
 import com.azure.storage.blob.models.BlobHttpHeaders;
-import com.azure.storage.blob.models.BlobItem;
 import com.azure.storage.blob.options.BlobParallelUploadOptions;
 import com.microsoft.migration.assets.model.ImageMetadata;
 import com.microsoft.migration.assets.model.ImageProcessingMessage;
 import com.microsoft.migration.assets.model.S3StorageItem;
 import com.microsoft.migration.assets.repository.ImageMetadataRepository;
-import lombok.RequiredArgsConstructor;
 import com.azure.spring.messaging.servicebus.core.ServiceBusTemplate;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -144,9 +140,8 @@ public class AwsS3Service implements StorageService {
     }
 
     private String generateUrl(String key) {
-        return blobServiceClient.getBlobContainerClient(containerName)
-                .getBlobClient(key)
-                .getBlobUrl();
+        // Generate URL that serves through our application instead of direct blob access
+        return "/s3/view/" + key;
     }
 
     private String generateKey(String filename) {
