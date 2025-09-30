@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Asset Manager</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .status { background-color: #e8f5e8; padding: 15px; border-radius: 5px; margin: 20px 0; }
+        .nav { margin: 20px 0; }
+        .nav a { margin-right: 15px; text-decoration: none; color: #007bff; }
+        .nav a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 th:text="${message}">Asset Manager</h1>
+        
+        <div class="status">
+            <p><strong>Status:</strong> <span th:text="${status}">Running</span></p>
+        </div>
+        
+        <div class="nav">
+            <a href="/">Home</a>
+            <a href="/health">Health Check</a>
+            <a href="/s3">File Manager</a>
+        </div>
+        
+        <div>
+            <h2>Welcome to Asset Manager</h2>
+            <p>This is a simplified version running in database-only mode.</p>
+            <p>Azure services are temporarily disabled for testing.</p>
+        </div>
+    </div>
+</body>
+</html>

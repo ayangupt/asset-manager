@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/refs/heads/main/schemas/v1.0/azure.yaml.json
+
+name: asset-manager
+metadata:
+  template: asset-manager@0.0.1-beta
+services:
+  web:
+    project: ./web
+    language: java
+    host: appservice
+  worker:
+    project: ./worker  
+    language: java
+    host: appservice

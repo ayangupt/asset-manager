@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Asset Manager - S3</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .nav { margin: 20px 0; }
+        .nav a { margin-right: 15px; text-decoration: none; color: #007bff; }
+        .nav a:hover { text-decoration: underline; }
+        .notice { background-color: #fff3cd; padding: 15px; border-radius: 5px; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <a href="/">Home</a>
+            <a href="/health">Health Check</a>
+            <a href="/s3">File Manager</a>
+        </div>
+        
+        <h1>File Manager</h1>
+        
+        <div class="notice">
+            <p><strong>Notice:</strong> Running in mock mode - Azure Storage is disabled for testing.</p>
+        </div>
+        
+        <div>
+            <h2>Mock Storage Interface</h2>
+            <p>This interface would normally connect to Azure Blob Storage.</p>
+            <p>Currently running with mock implementations.</p>
+        </div>
+    </div>
+</body>
+</html>
