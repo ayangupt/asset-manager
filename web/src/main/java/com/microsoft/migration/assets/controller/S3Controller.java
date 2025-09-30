@@ -118,4 +118,34 @@ public class S3Controller {
         }
         return "redirect:/s3";
     }
+
+    @PostMapping("/delete-all")
+    public String deleteAllObjects(RedirectAttributes redirectAttributes) {
+        try {
+            List<S3StorageItem> objects = storageService.listObjects();
+            int deletedCount = 0;
+            int failedCount = 0;
+            
+            for (S3StorageItem object : objects) {
+                try {
+                    storageService.deleteObject(object.getKey());
+                    deletedCount++;
+                } catch (Exception e) {
+                    failedCount++;
+                    System.err.println("Failed to delete " + object.getKey() + ": " + e.getMessage());
+                }
+            }
+            
+            if (failedCount == 0) {
+                redirectAttributes.addFlashAttribute("success", 
+                    "Successfully deleted all " + deletedCount + " files");
+            } else {
+                redirectAttributes.addFlashAttribute("warning", 
+                    "Deleted " + deletedCount + " files, but failed to delete " + failedCount + " files");
+            }
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", "Failed to delete files: " + e.getMessage());
+        }
+        return "redirect:/s3";
+    }
 }

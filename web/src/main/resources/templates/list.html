@@ -2,7 +2,21 @@
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout('S3 Object List', ~{::content})}">
 <body>
     <div th:fragment="content">
-        <h2>Your Images</h2>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Your Images</h2>
+            <div>
+                <a th:href="@{/s3/upload}" class="btn btn-success me-2">
+                    <i class="bi bi-plus-circle"></i> Upload New Image
+                </a>
+                <button th:if="${not #lists.isEmpty(objects)}" 
+                        type="button" 
+                        class="btn btn-danger" 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#deleteAllModal">
+                    <i class="bi bi-trash"></i> Delete All Assets
+                </button>
+            </div>
+        </div>
 
         <div class="row mt-4" id="imageContainer" th:if="${not #lists.isEmpty(objects)}">
             <div class="col-md-4 mb-4" th:each="object : ${objects}" th:attr="data-key=${object.key}">
@@ -162,6 +176,43 @@
                 startNormalPolling();
             });
         </script>
+
+        <!-- Delete All Confirmation Modal -->
+        <div class="modal fade" id="deleteAllModal" tabindex="-1" aria-labelledby="deleteAllModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="deleteAllModalLabel">
+                            <i class="bi bi-exclamation-triangle text-warning"></i> Delete All Assets
+                        </h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-danger">
+                            <strong>⚠️ Warning:</strong> This action cannot be undone!
+                        </div>
+                        <p>Are you sure you want to delete <strong>ALL</strong> uploaded assets?</p>
+                        <p>This will permanently remove:</p>
+                        <ul>
+                            <li>All uploaded images</li>
+                            <li>All thumbnails</li>
+                            <li>All metadata from the database</li>
+                        </ul>
+                        <p class="text-muted">
+                            Total files to delete: <strong th:text="${#lists.size(objects)}">0</strong>
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <form th:action="@{/s3/delete-all}" method="post" style="display: inline;">
+                            <button type="submit" class="btn btn-danger" id="confirmDeleteAll">
+                                <i class="bi bi-trash"></i> Yes, Delete All Assets
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
