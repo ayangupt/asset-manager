@@ -77,13 +77,18 @@ public class AwsS3Service implements StorageService {
 
         // Send message to queue for thumbnail generation (if Service Bus is available)
         if (serviceBusTemplate != null) {
-            ImageProcessingMessage message = new ImageProcessingMessage(
-                key,
-                file.getContentType(),
-                getStorageType(),
-                file.getSize()
-            );
-            serviceBusTemplate.send(IMAGE_PROCESSING_QUEUE, MessageBuilder.withPayload(message).build());
+            try {
+                ImageProcessingMessage message = new ImageProcessingMessage(
+                    key,
+                    file.getContentType(),
+                    getStorageType(),
+                    file.getSize()
+                );
+                serviceBusTemplate.send(IMAGE_PROCESSING_QUEUE, MessageBuilder.withPayload(message).build());
+            } catch (Exception e) {
+                // Don't fail the upload if Service Bus fails
+                System.err.println("Failed to send message to Service Bus: " + e.getMessage());
+            }
         }
 
         // Create and save metadata to database

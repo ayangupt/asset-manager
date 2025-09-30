@@ -46,9 +46,13 @@ public class S3Controller {
             }
 
             storageService.uploadObject(file);
-            redirectAttributes.addFlashAttribute("success", "File uploaded successfully");
+            
+            redirectAttributes.addFlashAttribute("success", "File uploaded successfully: " + file.getOriginalFilename());
             return "redirect:/s3";
         } catch (IOException e) {
+            redirectAttributes.addFlashAttribute("error", "Failed to upload file: " + e.getMessage());
+            return "redirect:/s3/upload";
+        } catch (Exception e) {
             redirectAttributes.addFlashAttribute("error", "Failed to upload file: " + e.getMessage());
             return "redirect:/s3/upload";
         }

@@ -115,15 +115,36 @@
                 }
             }
             
-            // Handle form submission to store upload info in session storage
+            // Handle form submission to prevent multiple submissions
+            let isSubmitting = false;
             document.getElementById('uploadForm').addEventListener('submit', function(e) {
                 const fileInput = document.getElementById('file');
-                if (fileInput.files.length > 0) {
-                    const file = fileInput.files[0];
-                    // Store upload information in sessionStorage
-                    sessionStorage.setItem('uploadSuccess', 'true');
-                    sessionStorage.setItem('uploadedKey', file.name);
+                const uploadBtn = document.getElementById('uploadBtn');
+                
+                // Prevent multiple submissions
+                if (isSubmitting) {
+                    e.preventDefault();
+                    return false;
                 }
+                
+                if (fileInput.files.length === 0) {
+                    e.preventDefault();
+                    alert('Please select a file to upload');
+                    return false;
+                }
+                
+                // Disable the submit button and show loading state
+                isSubmitting = true;
+                uploadBtn.disabled = true;
+                uploadBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Uploading...';
+                
+                const file = fileInput.files[0];
+                // Store upload information in sessionStorage
+                sessionStorage.setItem('uploadSuccess', 'true');
+                sessionStorage.setItem('uploadedKey', file.name);
+                
+                // Allow the form to submit normally
+                return true;
             });
         </script>
     </div>
